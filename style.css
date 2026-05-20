@@ -293,3 +293,18 @@ footer{
   }
 
 }
+
+
+/* FAVORITE BUTTON DEFAULT */
+
+.favorite-btn{
+  background:#374151 !important;
+  color:white;
+}
+
+/* FAVORITE BUTTON ACTIVE */
+
+.favorite-active{
+  background:#dc2626 !important;
+  color:white;
+}
