@@ -6,11 +6,15 @@ const savedAirports = document.getElementById("savedAirports");
 let airports = [];
 let saved = [];
 
-fetch("https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat")
+async function loadAirports() {
 
-  .then(response => response.text())
+  try {
 
-  .then(data => {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat"
+    );
+
+    const data = await response.text();
 
     const lines = data.split("\n");
 
@@ -20,11 +24,11 @@ fetch("https://raw.githubusercontent.com/jpatokal/openflights/master/data/airpor
 
       return {
 
-        name: parts[1]?.replace(/"/g, "") || "Unknown Airport",
+        name: parts[1]?.replace(/"/g, "") || "",
 
-        city: parts[2]?.replace(/"/g, "") || "Unknown City",
+        city: parts[2]?.replace(/"/g, "") || "",
 
-        country: parts[3]?.replace(/"/g, "") || "Unknown Country",
+        country: parts[3]?.replace(/"/g, "") || "",
 
         iata: parts[4]?.replace(/"/g, "") || ""
 
@@ -37,7 +41,19 @@ fetch("https://raw.githubusercontent.com/jpatokal/openflights/master/data/airpor
 
     count.innerText = airports.length;
 
-  });
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    count.innerText = "Error";
+
+  }
+
+}
+
+loadAirports();
 
 searchInput.addEventListener("input", (e) => {
 
@@ -47,15 +63,16 @@ searchInput.addEventListener("input", (e) => {
 
   results.innerHTML = "";
 
-  if (value === "") {
-    return;
-  }
+  if(value === "") return;
 
-  const filtered = airports.filter((airport) =>
+  const filtered = airports.filter((airport)=>
 
     airport.name.toLowerCase().includes(value) ||
+
     airport.city.toLowerCase().includes(value) ||
+
     airport.country.toLowerCase().includes(value) ||
+
     airport.iata.toLowerCase().includes(value)
 
   );
@@ -79,7 +96,7 @@ function displayAirports(data){
     return;
   }
 
-  data.forEach((airport) => {
+  data.forEach((airport)=>{
 
     results.innerHTML += `
 
@@ -125,13 +142,12 @@ function displayAirports(data){
 
     `;
   });
+
 }
 
 function saveAirport(code){
 
-  if(saved.includes(code)){
-    return;
-  }
+  if(saved.includes(code)) return;
 
   saved.push(code);
 
@@ -148,4 +164,5 @@ function openMap(name){
     `https://www.google.com/maps/search/${name}`,
     "_blank"
   );
+
 }
