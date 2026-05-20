@@ -133,6 +133,8 @@ function selectAirport(code){
 
 
 
+/* DISPLAY AIRPORTS */
+
 function displayAirports(data){
 
   results.innerHTML = "";
@@ -212,6 +214,8 @@ function displayAirports(data){
 
 
 
+/* FAVORITE TOGGLE */
+
 function toggleFavorite(code){
 
   if(favorites.includes(code)){
@@ -256,6 +260,8 @@ function toggleFavorite(code){
 
 
 
+/* FAVORITES SECTION */
+
 function renderFavorites(){
 
   favoriteAirports.innerHTML = "";
@@ -275,7 +281,10 @@ function renderFavorites(){
 
     favoriteAirports.innerHTML += `
 
-      <div class="code">
+      <div
+        class="favorite-chip"
+        onclick="openFavorite('${code}')"
+      >
         ❤️ ${code}
       </div>
 
@@ -286,6 +295,31 @@ function renderFavorites(){
 }
 
 
+
+/* OPEN FAVORITE AIRPORT */
+
+function openFavorite(code){
+
+  const airport = airports.find(
+    airport => airport.iata === code
+  );
+
+  if(airport){
+
+    displayAirports([airport]);
+
+    window.scrollTo({
+      top: results.offsetTop - 100,
+      behavior: "smooth"
+    });
+
+  }
+
+}
+
+
+
+/* OPEN GOOGLE MAP */
 
 function openMap(name){
 
@@ -298,7 +332,7 @@ function openMap(name){
 
 
 
-/* HIDE DROPDOWN WHEN CLICK OUTSIDE */
+/* HIDE DROPDOWN */
 
 document.addEventListener("click",(e)=>{
 
