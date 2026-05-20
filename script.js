@@ -203,10 +203,8 @@ function displayAirports(data){
           <div class="actions">
 
             <button
-              class="${
-                isFavorite
-                ? 'favorite-btn favorite-active'
-                : 'favorite-btn'
+              class="favorite-btn ${
+                isFavorite ? 'favorite-active' : ''
               }"
               onclick="toggleFavorite('${airport.iata}')"
             >
