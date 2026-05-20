@@ -124,7 +124,7 @@ searchInput.addEventListener("input", (e) => {
 
 
 
-/* SELECT AIRPORT FROM DROPDOWN */
+/* SELECT AIRPORT */
 
 function selectAirport(code){
 
@@ -203,7 +203,7 @@ function displayAirports(data){
           <div class="actions">
 
             <button
-              class="favorite-btn"
+              class="${isFavorite ? 'favorite-btn active-favorite' : 'favorite-btn'}"
               onclick="toggleFavorite('${airport.iata}')"
             >
 
@@ -331,31 +331,17 @@ function openFavorite(code){
 
 
 
-  /* UPDATE SEARCH INPUT */
-
   searchInput.value = code;
 
-
-
-  /* CLEAR DROPDOWN */
-
   suggestionsBox.innerHTML = "";
-
-
-
-  /* CLEAR OLD RESULTS */
 
   results.innerHTML = "";
 
 
 
-  /* SHOW AIRPORT */
-
   displayAirports([airport]);
 
 
-
-  /* SCROLL TO RESULT */
 
   results.scrollIntoView({
     behavior:"smooth"
