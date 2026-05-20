@@ -1,139 +1,57 @@
-const airports = [
-
-  {
-    name: "Indira Gandhi International Airport",
-    city: "Delhi",
-    country: "India",
-    iata: "DEL",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05"
-  },
-
-  {
-    name: "Dubai International Airport",
-    city: "Dubai",
-    country: "UAE",
-    iata: "DXB",
-    image: "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad"
-  },
-
-  {
-    name: "John F. Kennedy International Airport",
-    city: "New York",
-    country: "USA",
-    iata: "JFK",
-    image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
-  },
-
-  {
-    name: "Heathrow Airport",
-    city: "London",
-    country: "UK",
-    iata: "LHR",
-    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3"
-  },
-
-  {
-    name: "Chhatrapati Shivaji Maharaj International Airport",
-    city: "Mumbai",
-    country: "India",
-    iata: "BOM",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05"
-  }
-
-];
-
 const searchInput = document.getElementById("searchInput");
 const results = document.getElementById("results");
 const count = document.getElementById("count");
 const savedAirports = document.getElementById("savedAirports");
 
-count.innerText = airports.length;
-
+let airports = [];
 let saved = [];
 
-function displayAirports(data){
+fetch("https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat")
+
+  .then(response => response.text())
+
+  .then(data => {
+
+    const lines = data.split("\n");
+
+    airports = lines.map(line => {
+
+      const parts = line.split(",");
+
+      return {
+
+        name: parts[1]?.replace(/"/g, "") || "Unknown Airport",
+
+        city: parts[2]?.replace(/"/g, "") || "Unknown City",
+
+        country: parts[3]?.replace(/"/g, "") || "Unknown Country",
+
+        iata: parts[4]?.replace(/"/g, "") || ""
+
+      };
+
+    }).filter(airport =>
+      airport.iata &&
+      airport.iata !== "\\N"
+    );
+
+    count.innerText = airports.length;
+
+  });
+
+searchInput.addEventListener("input", (e) => {
+
+  const value = e.target.value
+    .toLowerCase()
+    .trim();
 
   results.innerHTML = "";
 
-  if(data.length === 0){
-
-    results.innerHTML = `
-      <div class="card">
-        <div class="card-content">
-          <div class="airport-name">
-            No Airport Found
-          </div>
-        </div>
-      </div>
-    `;
-
+  if (value === "") {
     return;
   }
 
-  data.forEach((airport)=>{
-
-    results.innerHTML += `
-
-      <div class="card">
-
-        <img src="${airport.image}" alt="${airport.name}">
-
-        <div class="card-content">
-
-          <div class="airport-name">
-            ${airport.name}
-          </div>
-
-          <div class="airport-info">
-
-            City: ${airport.city}<br>
-            Country: ${airport.country}<br>
-
-            <span class="code">
-              ${airport.iata}
-            </span>
-
-          </div>
-
-          <div class="actions">
-
-            <button
-              class="save-btn"
-              onclick="saveAirport('${airport.iata}')"
-            >
-              Save
-            </button>
-
-            <button
-              class="map-btn"
-              onclick="openMap('${airport.name}')"
-            >
-              Maps
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-  });
-
-}
-
-searchInput.addEventListener("input",(e)=>{
-
-  const value = e.target.value.toLowerCase().trim();
-
-  if(value === ""){
-
-    results.innerHTML = "";
-
-    return;
-  }
-
-  const filtered = airports.filter((airport)=>
+  const filtered = airports.filter((airport) =>
 
     airport.name.toLowerCase().includes(value) ||
     airport.city.toLowerCase().includes(value) ||
@@ -142,13 +60,78 @@ searchInput.addEventListener("input",(e)=>{
 
   );
 
-  displayAirports(filtered);
+  displayAirports(filtered.slice(0, 30));
 
 });
 
+function displayAirports(data){
+
+  if(data.length === 0){
+
+    results.innerHTML = `
+      <div class="card">
+        <div class="airport-name">
+          No Airport Found
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+  data.forEach((airport) => {
+
+    results.innerHTML += `
+
+      <div class="card">
+
+        <div class="airport-name">
+          ${airport.name}
+        </div>
+
+        <div class="airport-info">
+
+          <strong>City:</strong>
+          ${airport.city}<br>
+
+          <strong>Country:</strong>
+          ${airport.country}<br>
+
+          <span class="code">
+            ${airport.iata}
+          </span>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="save-btn"
+            onclick="saveAirport('${airport.iata}')"
+          >
+            Save
+          </button>
+
+          <button
+            class="map-btn"
+            onclick="openMap('${airport.name}')"
+          >
+            Maps
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+  });
+}
+
 function saveAirport(code){
 
-  if(saved.includes(code)) return;
+  if(saved.includes(code)){
+    return;
+  }
 
   saved.push(code);
 
@@ -165,5 +148,4 @@ function openMap(name){
     `https://www.google.com/maps/search/${name}`,
     "_blank"
   );
-
 }
