@@ -11,6 +11,8 @@ let favorites =
 
 
 
+/* LOAD AIRPORT DATA */
+
 async function loadAirports() {
 
   try {
@@ -62,6 +64,8 @@ loadAirports();
 
 
 
+/* SEARCH INPUT */
+
 searchInput.addEventListener("input", (e) => {
 
   const value = e.target.value
@@ -71,7 +75,12 @@ searchInput.addEventListener("input", (e) => {
   results.innerHTML = "";
   suggestionsBox.innerHTML = "";
 
-  if(value === "") return;
+  if(value === ""){
+
+    results.innerHTML = "";
+
+    return;
+  }
 
   const filtered = airports.filter((airport)=>
 
@@ -109,11 +118,13 @@ searchInput.addEventListener("input", (e) => {
 
 
 
-  displayAirports(filtered.slice(0, 30));
+  displayAirports(filtered.slice(0,30));
 
 });
 
 
+
+/* SELECT AIRPORT FROM DROPDOWN */
 
 function selectAirport(code){
 
@@ -142,13 +153,19 @@ function displayAirports(data){
   if(data.length === 0){
 
     results.innerHTML = `
+
       <div class="card">
+
         <div class="card-content">
+
           <div class="airport-name">
             No Airport Found
           </div>
+
         </div>
+
       </div>
+
     `;
 
     return;
@@ -238,6 +255,8 @@ function toggleFavorite(code){
 
   renderFavorites();
 
+
+
   const value = searchInput.value
     .toLowerCase()
     .trim();
@@ -260,7 +279,7 @@ function toggleFavorite(code){
 
 
 
-/* FAVORITES SECTION */
+/* RENDER FAVORITES */
 
 function renderFavorites(){
 
@@ -269,9 +288,11 @@ function renderFavorites(){
   if(favorites.length === 0){
 
     favoriteAirports.innerHTML = `
+
       <p style="color:#94a3b8;">
         No favorite airports yet.
       </p>
+
     `;
 
     return;
@@ -285,7 +306,9 @@ function renderFavorites(){
         class="favorite-chip"
         onclick="openFavorite('${code}')"
       >
+
         ❤️ ${code}
+
       </div>
 
     `;
@@ -304,16 +327,39 @@ function openFavorite(code){
     airport => airport.iata === code
   );
 
-  if(airport){
+  if(!airport) return;
 
-    displayAirports([airport]);
 
-    window.scrollTo({
-      top: results.offsetTop - 100,
-      behavior: "smooth"
-    });
 
-  }
+  /* UPDATE SEARCH INPUT */
+
+  searchInput.value = code;
+
+
+
+  /* CLEAR DROPDOWN */
+
+  suggestionsBox.innerHTML = "";
+
+
+
+  /* CLEAR OLD RESULTS */
+
+  results.innerHTML = "";
+
+
+
+  /* SHOW AIRPORT */
+
+  displayAirports([airport]);
+
+
+
+  /* SCROLL TO RESULT */
+
+  results.scrollIntoView({
+    behavior:"smooth"
+  });
 
 }
 
@@ -345,5 +391,7 @@ document.addEventListener("click",(e)=>{
 });
 
 
+
+/* INITIAL FAVORITES RENDER */
 
 renderFavorites();
