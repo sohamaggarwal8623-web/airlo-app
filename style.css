@@ -1,22 +1,17 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
+  margin:0;
+  font-family:Arial;
   background:#081225;
   color:white;
 }
 
 .navbar{
   padding:20px 40px;
-  border-bottom:1px solid rgba(255,255,255,0.1);
+  border-bottom:1px solid #1e293b;
 }
 
 .logo{
-  font-size:2rem;
+  font-size:32px;
   font-weight:bold;
   color:#60a5fa;
 }
@@ -27,13 +22,12 @@ body{
 }
 
 .hero h1{
-  font-size:4rem;
+  font-size:60px;
   margin-bottom:20px;
 }
 
 .hero p{
   color:#cbd5e1;
-  font-size:1.1rem;
 }
 
 .search-section{
@@ -44,7 +38,7 @@ body{
 
 .search-box{
   display:flex;
-  gap:12px;
+  gap:10px;
 }
 
 .search-box input{
@@ -52,18 +46,17 @@ body{
   padding:18px;
   border:none;
   border-radius:12px;
-  outline:none;
-  font-size:1rem;
+  font-size:18px;
 }
 
 .search-box button{
-  padding:18px 28px;
+  padding:18px 30px;
   border:none;
   border-radius:12px;
   background:#2563eb;
   color:white;
+  font-size:16px;
   cursor:pointer;
-  font-weight:bold;
 }
 
 .loaded{
@@ -75,25 +68,15 @@ body{
   width:90%;
   max-width:1100px;
   margin:60px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  display:flex;
   gap:20px;
 }
 
 .feature-card{
+  flex:1;
   background:#111c33;
   padding:25px;
-  border-radius:16px;
-  font-size:1.1rem;
-  font-weight:bold;
-}
-
-.feature-card span{
-  display:block;
-  margin-top:12px;
-  color:#94a3b8;
-  font-size:0.95rem;
-  font-weight:normal;
+  border-radius:15px;
 }
 
 .saved-section{
@@ -104,39 +87,21 @@ body{
 
 .saved-section h2{
   color:#60a5fa;
-  margin-bottom:20px;
-}
-
-#savedAirports{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.saved-item{
-  background:#2563eb;
-  padding:10px 16px;
-  border-radius:10px;
 }
 
 #results{
   width:90%;
   max-width:1100px;
-  margin:60px auto;
+  margin:50px auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:25px;
+  gap:20px;
 }
 
 .card{
   background:#111c33;
   border-radius:18px;
   overflow:hidden;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
 }
 
 .card img{
@@ -150,7 +115,7 @@ body{
 }
 
 .airport-name{
-  font-size:1.3rem;
+  font-size:24px;
   font-weight:bold;
   margin-bottom:10px;
 }
@@ -162,7 +127,7 @@ body{
 
 .code{
   display:inline-block;
-  margin-top:12px;
+  margin-top:10px;
   background:#2563eb;
   padding:6px 14px;
   border-radius:8px;
@@ -180,7 +145,6 @@ body{
   border:none;
   border-radius:10px;
   cursor:pointer;
-  font-weight:bold;
 }
 
 .save-btn{
@@ -191,12 +155,11 @@ body{
 .map-btn{
   background:#0f172a;
   color:white;
-  border:1px solid rgba(255,255,255,0.1);
 }
 
 footer{
-  margin-top:80px;
   background:#050b18;
+  margin-top:80px;
   padding:60px 20px;
 }
 
@@ -205,30 +168,18 @@ footer{
   max-width:1100px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:40px;
 }
 
 .footer-grid h3{
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
 .footer-grid a,
 .footer-grid p{
   display:block;
   color:#94a3b8;
-  margin-bottom:12px;
+  margin-bottom:10px;
   text-decoration:none;
-}
-
-@media(max-width:768px){
-
-  .hero h1{
-    font-size:2.5rem;
-  }
-
-  .search-box{
-    flex-direction:column;
-  }
-
 }
