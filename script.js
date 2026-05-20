@@ -1,10 +1,15 @@
 const searchInput = document.getElementById("searchInput");
 const results = document.getElementById("results");
 const count = document.getElementById("count");
-const savedAirports = document.getElementById("savedAirports");
+const suggestionsBox = document.getElementById("suggestionsBox");
+const favoriteAirports = document.getElementById("favoriteAirports");
 
 let airports = [];
-let saved = [];
+
+let favorites =
+  JSON.parse(localStorage.getItem("favorites")) || [];
+
+
 
 async function loadAirports() {
 
@@ -55,6 +60,8 @@ async function loadAirports() {
 
 loadAirports();
 
+
+
 searchInput.addEventListener("input", (e) => {
 
   const value = e.target.value
@@ -62,6 +69,7 @@ searchInput.addEventListener("input", (e) => {
     .trim();
 
   results.innerHTML = "";
+  suggestionsBox.innerHTML = "";
 
   if(value === "") return;
 
@@ -77,18 +85,66 @@ searchInput.addEventListener("input", (e) => {
 
   );
 
+
+
+  /* DROPDOWN SUGGESTIONS */
+
+  filtered.slice(0,8).forEach((airport)=>{
+
+    suggestionsBox.innerHTML += `
+
+      <div
+        class="suggestion-item"
+        onclick="selectAirport('${airport.iata}')"
+      >
+
+        ${airport.name}
+        (${airport.iata})
+
+      </div>
+
+    `;
+
+  });
+
+
+
   displayAirports(filtered.slice(0, 30));
 
 });
 
+
+
+function selectAirport(code){
+
+  searchInput.value = code;
+
+  suggestionsBox.innerHTML = "";
+
+  const filtered = airports.filter((airport)=>
+
+    airport.iata === code
+
+  );
+
+  displayAirports(filtered);
+
+}
+
+
+
 function displayAirports(data){
+
+  results.innerHTML = "";
 
   if(data.length === 0){
 
     results.innerHTML = `
       <div class="card">
-        <div class="airport-name">
-          No Airport Found
+        <div class="card-content">
+          <div class="airport-name">
+            No Airport Found
+          </div>
         </div>
       </div>
     `;
@@ -98,43 +154,52 @@ function displayAirports(data){
 
   data.forEach((airport)=>{
 
+    const isFavorite =
+      favorites.includes(airport.iata);
+
     results.innerHTML += `
 
       <div class="card">
 
-        <div class="airport-name">
-          ${airport.name}
-        </div>
+        <div class="card-content">
 
-        <div class="airport-info">
+          <div class="airport-name">
+            ${airport.name}
+          </div>
 
-          <strong>City:</strong>
-          ${airport.city}<br>
+          <div class="airport-info">
 
-          <strong>Country:</strong>
-          ${airport.country}<br>
+            <strong>City:</strong>
+            ${airport.city}<br>
 
-          <span class="code">
-            ${airport.iata}
-          </span>
+            <strong>Country:</strong>
+            ${airport.country}<br>
 
-        </div>
+            <span class="code">
+              ${airport.iata}
+            </span>
 
-        <div class="actions">
+          </div>
 
-          <button
-            class="save-btn"
-            onclick="saveAirport('${airport.iata}')"
-          >
-            Save
-          </button>
+          <div class="actions">
 
-          <button
-            class="map-btn"
-            onclick="openMap('${airport.name}')"
-          >
-            Maps
-          </button>
+            <button
+              class="favorite-btn"
+              onclick="toggleFavorite('${airport.iata}')"
+            >
+
+              ${isFavorite ? "❤️ Favorited" : "🤍 Favorite"}
+
+            </button>
+
+            <button
+              class="map-btn"
+              onclick="openMap('${airport.name}')"
+            >
+              Maps
+            </button>
+
+          </div>
 
         </div>
 
@@ -145,18 +210,82 @@ function displayAirports(data){
 
 }
 
-function saveAirport(code){
 
-  if(saved.includes(code)) return;
 
-  saved.push(code);
+function toggleFavorite(code){
 
-  savedAirports.innerHTML += `
-    <div class="saved-item">
-      ${code}
-    </div>
-  `;
+  if(favorites.includes(code)){
+
+    favorites =
+      favorites.filter(item => item !== code);
+
+  }
+
+  else{
+
+    favorites.push(code);
+
+  }
+
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(favorites)
+  );
+
+  renderFavorites();
+
+  const value = searchInput.value
+    .toLowerCase()
+    .trim();
+
+  const filtered = airports.filter((airport)=>
+
+    airport.name.toLowerCase().includes(value) ||
+
+    airport.city.toLowerCase().includes(value) ||
+
+    airport.country.toLowerCase().includes(value) ||
+
+    airport.iata.toLowerCase().includes(value)
+
+  );
+
+  displayAirports(filtered.slice(0,30));
+
 }
+
+
+
+function renderFavorites(){
+
+  favoriteAirports.innerHTML = "";
+
+  if(favorites.length === 0){
+
+    favoriteAirports.innerHTML = `
+      <p style="color:#94a3b8;">
+        No favorite airports yet.
+      </p>
+    `;
+
+    return;
+  }
+
+  favorites.forEach((code)=>{
+
+    favoriteAirports.innerHTML += `
+
+      <div class="code">
+        ❤️ ${code}
+      </div>
+
+    `;
+
+  });
+
+}
+
+
 
 function openMap(name){
 
@@ -166,3 +295,21 @@ function openMap(name){
   );
 
 }
+
+
+
+/* HIDE DROPDOWN WHEN CLICK OUTSIDE */
+
+document.addEventListener("click",(e)=>{
+
+  if(!e.target.closest(".search-box")){
+
+    suggestionsBox.innerHTML = "";
+
+  }
+
+});
+
+
+
+renderFavorites();
