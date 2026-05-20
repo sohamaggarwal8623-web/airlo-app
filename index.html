@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
   <nav class="navbar">
@@ -40,11 +41,15 @@
         type="text"
         id="searchInput"
         placeholder="Search airport, city, country or IATA..."
+        autocomplete="off"
       >
 
       <button id="searchBtn">
         Search
       </button>
+
+      <!-- Dropdown Suggestions -->
+      <div id="suggestionsBox" class="suggestions-box"></div>
 
     </div>
 
@@ -73,13 +78,14 @@
 
   </section>
 
-  <section class="saved-section">
+  <!-- FAVORITES SECTION -->
+  <section class="favorites-section">
 
     <h2>
-      Saved Airports
+      ❤️ Favorite Airports
     </h2>
 
-    <div id="savedAirports"></div>
+    <div id="favoriteAirports"></div>
 
   </section>
 
