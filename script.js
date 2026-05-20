@@ -96,7 +96,7 @@ searchInput.addEventListener("input", (e) => {
 
 
 
-  /* DROPDOWN SUGGESTIONS */
+  /* DROPDOWN */
 
   filtered.slice(0,8).forEach((airport)=>{
 
@@ -203,11 +203,19 @@ function displayAirports(data){
           <div class="actions">
 
             <button
-              class="${isFavorite ? 'favorite-btn active-favorite' : 'favorite-btn'}"
+              class="${
+                isFavorite
+                ? 'favorite-btn favorite-active'
+                : 'favorite-btn'
+              }"
               onclick="toggleFavorite('${airport.iata}')"
             >
 
-              ${isFavorite ? "❤️ Favorited" : "🤍 Favorite"}
+              ${
+                isFavorite
+                ? "❤️ Favorited"
+                : "🤍 Favorite"
+              }
 
             </button>
 
@@ -279,7 +287,7 @@ function toggleFavorite(code){
 
 
 
-/* RENDER FAVORITES */
+/* FAVORITES SECTION */
 
 function renderFavorites(){
 
@@ -319,7 +327,7 @@ function renderFavorites(){
 
 
 
-/* OPEN FAVORITE AIRPORT */
+/* OPEN FAVORITE */
 
 function openFavorite(code){
 
@@ -329,19 +337,13 @@ function openFavorite(code){
 
   if(!airport) return;
 
-
-
   searchInput.value = code;
 
   suggestionsBox.innerHTML = "";
 
   results.innerHTML = "";
 
-
-
   displayAirports([airport]);
-
-
 
   results.scrollIntoView({
     behavior:"smooth"
@@ -351,7 +353,7 @@ function openFavorite(code){
 
 
 
-/* OPEN GOOGLE MAP */
+/* OPEN MAP */
 
 function openMap(name){
 
@@ -378,6 +380,6 @@ document.addEventListener("click",(e)=>{
 
 
 
-/* INITIAL FAVORITES RENDER */
+/* INITIAL FAVORITES */
 
 renderFavorites();
