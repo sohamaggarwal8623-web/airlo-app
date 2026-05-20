@@ -1,118 +1,107 @@
-# ✈ Airlo — Airport Search Web Application
+# ✈️ Airlo App
 
-Airlo is a modern airport search web application that allows users to instantly search airports worldwide using airport names, city names, country names, or IATA airport codes.
-
-The project is built using pure HTML, CSS, and JavaScript without any frameworks, making it lightweight, fast, and beginner-friendly while still providing a professional UI and real-world functionality.
+A modern airport and IATA code search web application built using **HTML, CSS, and JavaScript**. This project allows users to quickly search airports using airport names, cities, countries, or IATA codes with a clean and responsive interface.
 
 ---
 
-# 🌍 Live Features
+## 🌐 Live Demo
 
-## 🔎 Smart Airport Search
-
-Users can search airports using:
-
-- Airport Name
-- City Name
-- Country Name
-- IATA Code
-
-The search works in real time while typing.
-
-Example:
-
-- `DEL` → Indira Gandhi International Airport
-- `LHR` → Heathrow Airport
-- `Tokyo` → Airports in Tokyo
+🔗 [https://sohamaggarwal8623-web.github.io/airlo-app/](https://sohamaggarwal8623-web.github.io/airlo-app/)
 
 ---
 
-# ⚡ Real-Time Search Experience
+## 📌 Features
 
-The application uses live filtering.
-
-As the user types:
-
-- Results update instantly
-- No page reload required
-- Faster user experience
-- Smooth searching behavior
-
----
-
-# 🗺 Google Maps Integration
-
-Each airport card contains a:
-
-- "View on Map" button
-
-Clicking it opens the airport location directly in Google Maps using latitude and longitude coordinates.
+* 🔍 Real-time airport search
+* 🛫 Search using IATA code (e.g., DEL, JFK, LHR)
+* 🌍 Airport information with country and city
+* ⚡ Fast and responsive UI
+* 📱 Mobile-friendly design
+* 🎨 Modern and clean interface
+* ❌ Handles invalid searches gracefully
+* 🔄 Dynamic filtering using JavaScript
 
 ---
 
-# 💾 Save Airports Feature
+## 🛠️ Technologies Used
 
-Users can save airports locally using browser Local Storage.
-
-Saved airports remain available even after refreshing the page.
-
-This demonstrates:
-
-- Local Storage usage
-- State persistence
-- Real-world frontend functionality
+* HTML5
+* CSS3
+* JavaScript (Vanilla JS)
+* GitHub Pages (Deployment)
 
 ---
 
-# 📱 Fully Responsive Design
-
-The UI is fully responsive and works smoothly on:
-
-- Desktop
-- Laptop
-- Tablet
-- Mobile Devices
-
-Responsive layouts are implemented using:
-
-- CSS Grid
-- Flexbox
-- Media Queries
-
----
-
-# 🎨 Modern UI Design
-
-The project includes:
-
-- Dark modern interface
-- Card-based layout
-- Hover animations
-- Responsive navbar
-- Professional spacing & typography
-
-The design focuses on usability and clean frontend structure.
-
----
-
-# 🛠 Tech Stack
-
-| Technology | Usage |
-|---|---|
-| HTML5 | Structure |
-| CSS3 | Styling & Responsive Design |
-| JavaScript (Vanilla JS) | Logic & Interactivity |
-| Local Storage | Save Airports |
-| OpenFlights Dataset | Airport Database |
-
----
-
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```bash
-Airlo/
+airlo-app/
 │
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
+```
+
+---
+
+## 🚀 How It Works
+
+1. User enters an airport name, city, country, or IATA code.
+2. JavaScript filters the airport dataset in real time.
+3. Matching airports are displayed instantly.
+4. Responsive design ensures smooth experience across devices.
+
+---
+
+## 💡 Example Searches
+
+| Search Input | Result                                |
+| ------------ | ------------------------------------- |
+| DEL          | Indira Gandhi International Airport   |
+| JFK          | John F. Kennedy International Airport |
+| DXB          | Dubai International Airport           |
+| London       | Airports related to London            |
+
+---
+
+## 🎯 Project Goal
+
+The goal of this project is to create a practical and user-friendly airport search interface while improving frontend development skills such as:
+
+* DOM manipulation
+* Search algorithms
+* Dynamic rendering
+* Responsive web design
+* Clean UI/UX principles
+
+---
+
+## 📈 Future Improvements
+
+* Live airport API integration
+* Flight information support
+* Dark mode
+* Search suggestions/autocomplete
+* Favorite airports feature
+* Backend integration with database
+
+---
+
+## 👨‍💻 Developer
+
+**Soham Aggarwal**
+
+* GitHub: [https://github.com/sohamaggarwal8623-web](https://github.com/sohamaggarwal8623-web)
+
+---
+
+## 📬 Feedback
+
+If you have suggestions or feedback, feel free to open an issue or connect through GitHub.
+
+---
+
+## ⭐ Support
+
+If you liked this project, consider giving it a ⭐ on GitHub.
