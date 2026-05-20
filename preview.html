@@ -1,194 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Airlo Airport Search</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Airlo - Airport Search Engine</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
-  <!-- NAVBAR -->
-
-  <nav class="navbar">
-
-    <div class="logo">
-      ✈ Airlo
-    </div>
-
-    <div class="nav-buttons">
-
-      <button class="signin">
-        Sign In
-      </button>
-
-      <button class="signup">
-        Sign Up
-      </button>
-
-    </div>
-
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <h1>Search Airports Worldwide</h1>
-
-    <p>
-      Find airports instantly using airport name,
-      city name, country or IATA code.
-    </p>
-
-  </section>
-
-  <!-- MAIN -->
 
   <div class="container">
 
-    <!-- SEARCH -->
+    <h1>✈ Airlo</h1>
+    <p class="subtitle">Search Airports Worldwide</p>
 
-    <div class="search-box">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by airport, city, country or IATA code..."
+    />
 
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search airport, city, country or IATA..."
-        oninput="searchAirport()"
-      >
-
-      <button
-        class="search-btn"
-        onclick="searchAirport()"
-      >
-        Search
-      </button>
-
-    </div>
-
-    <!-- STATUS -->
-
-    <div class="status" id="status">
-      Loading airport database...
-    </div>
-
-    <!-- RESULTS -->
-
-    <div class="results" id="results"></div>
-
-    <!-- FEATURES -->
-
-    <div class="features">
-
-      <div class="feature-card">
-
-        <h3>🌍 Global Database</h3>
-
-        <p>
-          Access airports from around the world.
-        </p>
-
-      </div>
-
-      <div class="feature-card">
-
-        <h3>⚡ Fast Search</h3>
-
-        <p>
-          Search instantly with smart filtering.
-        </p>
-
-      </div>
-
-      <div class="feature-card">
-
-        <h3>🗺 Google Maps</h3>
-
-        <p>
-          Open airport location directly in Maps.
-        </p>
-
-      </div>
-
-    </div>
-
-    <!-- SAVED -->
-
-    <h2 class="saved-title">
-      Saved Airports
-    </h2>
-
-    <div
-      class="results"
-      id="savedResults"
-    ></div>
+    <div id="results"></div>
 
   </div>
 
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="footer-content">
-
-      <div class="footer-section">
-
-        <h2>Airlo</h2>
-
-        <p>
-          Your modern airport search platform.
-        </p>
-
-      </div>
-
-      <div class="footer-section">
-
-        <h2>Help Center</h2>
-
-        <a href="#">FAQs</a>
-        <a href="#">Support</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Report Issue</a>
-
-      </div>
-
-      <div class="footer-section">
-
-        <h2>Company</h2>
-
-        <a href="#">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Privacy Policy</a>
-
-      </div>
-
-      <div class="footer-section">
-
-        <h2>Socials</h2>
-
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-
-      </div>
-
-    </div>
-
-    <div class="copyright">
-      © 2026 Airlo. All rights reserved.
-    </div>
-
-  </footer>
-
   <script src="script.js"></script>
-
 </body>
-
 </html>
