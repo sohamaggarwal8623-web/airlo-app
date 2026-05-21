@@ -1,42 +1,53 @@
 # ✈️ Airlo App
 
-A modern and responsive airport search web application built using **HTML, CSS, and JavaScript**.  
-Search airports instantly using airport name, city, country, or IATA code with a clean UI and real-time dropdown suggestions.
+A modern and responsive airport search web application built using **HTML, CSS, and Vanilla JavaScript**.
+
+Airlo allows users to search airports instantly with real-time suggestions, manage favorite airports, and experience a clean and fast user interface optimized for multiple devices.
 
 ---
 
 ## 🌐 Live Demo
 
-🔗 https://sohamaggarwal8623-web.github.io/airlo-app/
+[Open Airlo App](https://sohamaggarwal8623-web.github.io/airlo-app/)
 
 ---
 
-# 🚀 Features
+## 📌 Features
 
 - 🔍 Real-time airport search
-- 🛫 Search using IATA code (DEL, JFK, DXB, etc.)
-- 🌍 Global airport database
-- ⚡ Google-style live dropdown suggestions
-- ❤️ Favorite airport toggle system
-- 💾 Favorites saved using LocalStorage
-- 📍 Open airport directly in Google Maps
-- 📱 Fully responsive UI
-- 🎨 Modern dark-themed interface
-- 🔄 Dynamic filtering with JavaScript
-- 🚀 Smooth scrolling interactions
+- ⚡ Dynamic search suggestions
+- ❤️ Add and remove favorite airports
+- 💾 LocalStorage support for saving favorites
+- 📱 Responsive design for desktop and mobile
+- 🎨 Clean and modern UI
+- 🚀 Fast and lightweight performance
 
 ---
 
-# 🛠️ Technologies Used
+## 🛠 Tech Stack
 
 - HTML5
 - CSS3
-- Vanilla JavaScript
+- Vanilla JavaScript (ES6)
+- LocalStorage API
 - GitHub Pages
 
 ---
 
-# 📂 Project Structure
+## 📸 Screenshots
+
+### Home Page
+(Add screenshot here)
+
+### Search Suggestions
+(Add screenshot here)
+
+### Favorites Section
+(Add screenshot here)
+
+---
+
+## 📂 Project Structure
 
 ```bash
 airlo-app/
@@ -44,80 +55,47 @@ airlo-app/
 ├── index.html
 ├── style.css
 ├── script.js
-├── airports.js
+├── assets/
 └── README.md
 ```
 
 ---
 
-# ⚡ How It Works
+## 📚 What I Learned
 
-1. User types airport name, city, country, or IATA code.
-2. JavaScript filters airport data in real-time.
-3. Matching airports appear instantly in a dropdown.
-4. Clicking a result displays airport details.
-5. Users can:
-   - ❤️ Add favorites
-   - 📍 Open airport in Maps
-   - 🔎 Reopen favorite airports instantly
-
----
-
-# ❤️ Favorite System
-
-The app includes a dynamic favorite system:
-
-- Toggle favorite airports
-- Favorites persist after refresh using LocalStorage
-- Favorite airports can be reopened instantly
-- Active favorites visually change color
-
----
-
-# 📸 Example Searches
-
-| Search | Result |
-|---|---|
-| DEL | Indira Gandhi International Airport |
-| JFK | John F. Kennedy International Airport |
-| DXB | Dubai International Airport |
-| London | Airports related to London |
-
----
-
-# 🎯 Purpose of This Project
-
-This project was created to improve frontend development skills including:
+Through this project, I improved my understanding of:
 
 - DOM Manipulation
-- Search Functionality
-- Dynamic Rendering
 - Event Handling
-- LocalStorage
-- Responsive Design
-- UI/UX Development
+- Real-time Filtering
+- Dynamic Rendering
+- Responsive Web Design
+- LocalStorage Management
+- UI/UX Improvement
+- GitHub Deployment Workflow
 
 ---
 
-# 🔮 Future Improvements
+## 🚀 Future Improvements
 
-- ✈️ Flight tracking integration
-- 🌙 Dark/Light mode toggle
-- 🧠 Smart autocomplete
-- 🌐 Airport API integration
-- 📊 Airport statistics
-- 🎙️ Voice search support
+- API-based live airport data
+- Dark mode support
+- Advanced filtering options
+- Search history
+- Backend integration
+- User authentication
 
 ---
 
-# 👨‍💻 Developer
+## 👨‍💻 Developer
 
 **Soham Aggarwal**
 
 - GitHub: https://github.com/sohamaggarwal8623-web
+- LinkedIn: Add your LinkedIn profile here
 
 ---
 
-# ⭐ Support
+## ⭐ Support
 
 If you like this project, consider giving it a ⭐ on GitHub.
