@@ -8,7 +8,7 @@ Airlo allows users to search airports instantly with real-time suggestions, mana
 
 ## 🌐 Live Demo
 
-[Open Airlo App](https://sohamaggarwal8623-web.github.io/Airlo-Web-Paage/).
+[Open Airlo App](https://sohamaggarwal8623-web.github.io/Airlo-Web-Page/).
 
 ---
 
