@@ -37,13 +37,16 @@ Airlo allows users to search airports instantly with real-time suggestions, mana
 ## 📸 Screenshots
 
 ### Home Page
-(Add screenshot here)
+<img width="2543" height="1283" alt="Screenshot 2026-05-21 123754" src="https://github.com/user-attachments/assets/330b590c-739f-4a91-91b0-c569831d9af9" />
+
 
 ### Search Suggestions
-(Add screenshot here)
+<img width="1366" height="929" alt="image" src="https://github.com/user-attachments/assets/c2f4300f-4510-4793-90ec-a05b980a8118" />
+
 
 ### Favorites Section
-(Add screenshot here)
+<img width="1285" height="662" alt="image" src="https://github.com/user-attachments/assets/313890fc-1c84-4728-9400-0ee5da89109a" />
+
 
 ---
 
