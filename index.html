@@ -2,25 +2,37 @@
 <html lang="en">
 <head>
 
+  <!-- Character Encoding -->
   <meta charset="UTF-8">
+
+  <!-- Responsive Layout Support -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Website Title -->
   <title>Airlo - Airport Search</title>
 
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
+  <!-- =========================
+       Navigation Bar
+  ========================== -->
   <nav class="navbar">
 
+    <!-- Brand Logo -->
     <div class="logo">
       ✈ Airlo
     </div>
 
   </nav>
 
+  <!-- =========================
+       Hero Section
+  ========================== -->
   <section class="hero">
 
     <h1>
@@ -33,10 +45,14 @@
 
   </section>
 
+  <!-- =========================
+       Airport Search Section
+  ========================== -->
   <section class="search-section">
 
     <div class="search-box">
 
+      <!-- User Search Input -->
       <input
         type="text"
         id="searchInput"
@@ -44,21 +60,26 @@
         autocomplete="off"
       >
 
+      <!-- Search Trigger Button -->
       <button id="searchBtn">
         Search
       </button>
 
-      <!-- Dropdown Suggestions -->
+      <!-- Live Search Suggestions -->
       <div id="suggestionsBox" class="suggestions-box"></div>
 
     </div>
 
+    <!-- Total Airports Loaded Dynamically -->
     <p class="loaded">
       Loaded <span id="count"></span> airports
     </p>
 
   </section>
 
+  <!-- =========================
+       Features Section
+  ========================== -->
   <section class="features">
 
     <div class="feature-card">
@@ -78,28 +99,37 @@
 
   </section>
 
-  <!-- FAVORITES SECTION -->
+  <!-- =========================
+       Favorite Airports Section
+  ========================== -->
   <section class="favorites-section">
 
     <h2>
       ❤️ Favorite Airports
     </h2>
 
+    <!-- Favorite Airports Will Be Injected Here -->
     <div id="favoriteAirports"></div>
 
   </section>
 
+  <!-- Dynamic Airport Search Results -->
   <section id="results"></section>
 
+  <!-- =========================
+       Footer Section
+  ========================== -->
   <footer>
 
     <div class="footer-grid">
 
+      <!-- Brand Information -->
       <div>
         <h3>Airlo</h3>
         <p>Your modern airport search platform.</p>
       </div>
 
+      <!-- Help Links -->
       <div>
         <h3>Help Center</h3>
         <a href="#">FAQs</a>
@@ -107,6 +137,7 @@
         <a href="#">Contact</a>
       </div>
 
+      <!-- Company Links -->
       <div>
         <h3>Company</h3>
         <a href="#">About</a>
@@ -114,6 +145,7 @@
         <a href="#">Privacy</a>
       </div>
 
+      <!-- Social Media Links -->
       <div>
         <h3>Socials</h3>
         <a href="#">Instagram</a>
@@ -125,7 +157,10 @@
 
   </footer>
 
+  <!-- Airport Dataset -->
   <script src="airports.js"></script>
+
+  <!-- Main Application Logic -->
   <script src="script.js"></script>
 
 </body>
