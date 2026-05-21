@@ -55,8 +55,8 @@ airlo-app/
 ├── index.html
 ├── style.css
 ├── script.js
-├── assets/
-└── README.md
+├── README.md
+
 ```
 
 ---
